@@ -6,7 +6,7 @@ import pandas as pd
 # NBA season we will be analyzing
 year = 2019
 # URL page we will scraping (see image above)
-url = "https://www.basketball-reference.com/leagues/NBA_{}_per_game.html".format(year)
+url = "https://www.basketball-reference.com/leagues/NBA_{}_rookies.html".format(year)
 # this is the HTML from the given URL
 html = urlopen(url)
 soup = BeautifulSoup(html)
