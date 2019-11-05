@@ -1,0 +1,8 @@
+Find a way to build the full website with the table inside of it
+
+Possibilities:
+- Hardcoding the HTML skeleton and appending the string on the write
+   - https://stackoverflow.com/questions/33920896/table-within-an-html-document-using-python-list
+   - using the format(<whatever you want>) to inject the table into the HTML
+
+- Parsing the existing .html file and replacing the existing table with the updated table
