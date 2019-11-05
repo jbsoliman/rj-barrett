@@ -22,12 +22,12 @@ soup.find_all('tr',limit=2)[2:]
 headers = [th.get_text() for th in soup.find_all('tr', limit=2)[1].find_all('th')]
 # exclude the second column as we will not need the ranking order from Basketball Reference for the analysis
 headers = headers[1:]
-headers
 
 # finds table rows (ignoring first two)
 rows = soup.find_all('tr')[2:]
 player_stats = [[td.get_text() for td in rows[i].find_all('td')]
             for i in range(len(rows))]
+
 
 stats = pd.DataFrame(player_stats, columns = headers)
 
@@ -39,7 +39,7 @@ print (stats)
 
 
 # places the DataFrame into a html format without writing it
-html = stats.to_html()
+html = stats.to_html(index=False)
 
 # writes the html format to index.html with proper encoding
 with open("index.html", "w", encoding="utf-8") as file:
