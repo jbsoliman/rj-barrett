@@ -6,3 +6,17 @@ Possibilities:
    - using the format(<whatever you want>) to inject the table into the HTML
 
 - Parsing the existing .html file and replacing the existing table with the updated table
+
+
+
+NEW TODO:
+
+- Find what needs to go on the first page
+   - Maybe "RJ Barrett is":
+      - xth in PPG
+      - xth in APG 
+      - xth in RPG 
+      - xth in SPG 
+      - Maybe separate pages for those?
+- Figure out if extra pages are needed 
+- Eventual CSS styling for all pages 

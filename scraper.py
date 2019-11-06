@@ -42,16 +42,10 @@ print (stats)
 html = stats.to_html(index=False)
 
 
-
-
-
-
-
-
 #HTML Skeleton
 html_skeleton = """<HTML>
 <body>
-    <h1>RJ Barrett</h1>
+    <h1>RJ Barrett - Rookie of the Year?</h1>
     {}
 </body>
 </HTML>""".format(html)
