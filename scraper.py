@@ -3,6 +3,23 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 
+def isfloat(x):
+    try:
+        a = float(x)
+    except ValueError:
+        return False
+    else:
+        return True
+
+def isint(x):
+    try:
+        a = float(x)
+        b = int(a)
+    except ValueError:
+        return False
+    else:
+        return a == b
+
 # NBA season we will be analyzing
 year = 2020
 
@@ -28,11 +45,22 @@ rows = soup.find_all('tr')[2:]
 player_stats = [[td.get_text() for td in rows[i].find_all('td')]
             for i in range(len(rows))]
 
+# converting table to floats for sorting
+for i in range(len(player_stats)):
+    for j in range(len(player_stats[i])):
+        if isfloat(player_stats[i][j]):
+            player_stats[i][j] = float(player_stats[i][j])
+
+
 
 stats = pd.DataFrame(player_stats, columns = headers)
 
-#Sorts table values by Age
-stats = stats.sort_values(by=['Age'])
+
+
+
+
+#Sorts table values by PPG Descending
+stats = stats.sort_values(by=['PTS'],ascending=False)
 stats = stats.head(30)
 print (stats)
 
