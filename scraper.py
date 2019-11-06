@@ -45,7 +45,9 @@ rows = soup.find_all('tr')[2:]
 player_stats = [[td.get_text() for td in rows[i].find_all('td')]
             for i in range(len(rows))]
 
-# converting table to floats for sorting
+ppg = 0;
+
+# converting table to floats for sorting // setting rank for ppg
 for i in range(len(player_stats)):
     for j in range(len(player_stats[i])):
         if isfloat(player_stats[i][j]):
@@ -74,9 +76,14 @@ html = stats.to_html(index=False)
 html_skeleton = """<HTML>
 <body>
     <h1>RJ Barrett - Rookie of the Year?</h1>
+    <h3>RJ Barrett is:
+    <ul>
+    <li>#{} in PPG</li>
+    </ul>
+    </h3>
     {}
 </body>
-</HTML>""".format(html)
+</HTML>""".format('2',html)
 
 # writes the html format to index.html with proper encoding
 with open("index.html", "w", encoding="utf-8") as file:

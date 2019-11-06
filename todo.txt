@@ -14,9 +14,10 @@ NEW TODO:
 - Find what needs to go on the first page
    - Maybe "RJ Barrett is":
       - xth in PPG
-      - xth in APG 
-      - xth in RPG 
-      - xth in SPG 
+      - xth in APG
+      - xth in RPG
+      - xth in SPG
       - Maybe separate pages for those?
-- Figure out if extra pages are needed 
-- Eventual CSS styling for all pages 
+        - Or maybe one BIG page? hmmm
+- Figure out if extra pages are needed
+- Eventual CSS styling for all pages
