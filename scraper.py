@@ -41,6 +41,21 @@ print (stats)
 # places the DataFrame into a html format without writing it
 html = stats.to_html(index=False)
 
+
+
+
+
+
+
+
+#HTML Skeleton
+html_skeleton = """<HTML>
+<body>
+    <h1>RJ Barrett</h1>
+    {}
+</body>
+</HTML>""".format(html)
+
 # writes the html format to index.html with proper encoding
 with open("index.html", "w", encoding="utf-8") as file:
-    file.write(html)
+    file.write(html_skeleton)
