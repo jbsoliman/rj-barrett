@@ -33,10 +33,10 @@ def make_html(html):
         <h1>RJ Barrett - Rookie of the Year?</h1>
         <h3>RJ Barrett is:
         <ul>
-        <li><a href="https://jbsoliman.github.io/rj-barrett/ppg/">#{} in Points Per Game</a></li>
-        <li><a href="https://jbsoliman.github.io/rj-barrett/blk/">#{} in Total Blocks</a></li>
-        <li><a href="https://jbsoliman.github.io/rj-barrett/rpg/">#{} in Rebounds Per Game</a></li>
-        <li><a href="https://jbsoliman.github.io/rj-barrett/apg/">#{} in Assists Per Game</a></li>
+        <li><a href="https://jbsoliman.github.io/rj-barrett/ppg">#{} in Points Per Game</a></li>
+        <li><a href="https://jbsoliman.github.io/rj-barrett/blk">#{} in Total Blocks</a></li>
+        <li><a href="https://jbsoliman.github.io/rj-barrett/rpg">#{} in Rebounds Per Game</a></li>
+        <li><a href="https://jbsoliman.github.io/rj-barrett/apg">#{} in Assists Per Game</a></li>
         </ul>
         </h3>
         {}
