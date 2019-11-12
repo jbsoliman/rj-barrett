@@ -23,15 +23,20 @@ def isint(x):
 
 #HTML Skeleton
 def make_html(html):
-    html_skeleton = """<HTML>
+    html_skeleton = """<!DOCTYPE html>
+    <HTML>
+    <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
     <body>
+
         <h1>RJ Barrett - Rookie of the Year?</h1>
         <h3>RJ Barrett is:
         <ul>
-        <li>#{} in Points Per Game</li>
-        <li>#{} in Total Blocks</li>
-        <li>#{} in Rebounds Per Game</li>
-        <li>#{} in Assists Per Game</li>
+        <li><a href="https://jbsoliman.github.io/rj-barrett/ppg/">#{} in Points Per Game</a></li>
+        <li><a href="https://jbsoliman.github.io/rj-barrett/blk/">#{} in Total Blocks</a></li>
+        <li><a href="https://jbsoliman.github.io/rj-barrett/rpg/">#{} in Rebounds Per Game</a></li>
+        <li><a href="https://jbsoliman.github.io/rj-barrett/apg/">#{} in Assists Per Game</a></li>
         </ul>
         </h3>
         {}
@@ -39,6 +44,20 @@ def make_html(html):
     </HTML>""".format(rj_ppg_rank, rj_blk_rank,rj_rpg_rank,rj_apg_rank,html)
 
     return html_skeleton
+
+
+def make_css(row):
+    css_skeleton = """table tr:nth-of-type({}){{background-color: coral;}}
+
+    """.format(str(row))
+
+    return css_skeleton
+
+#def find_row(df):
+#    for i in range(len(df.index)):
+#        if df.at[i,'Player'] == 'RJ Barrett':
+#            return i
+
 
 
 
@@ -84,7 +103,7 @@ headers[26] = 'APG'
 
 stats = pd.DataFrame(player_stats, columns = headers)
 stats["ppg_rank"]=stats["PPG"].rank(ascending=False)
-stats["blk_rank"]=stats["BLK"].rank(ascending=False)
+stats["blk_rank"]=stats["BLK"].rank(ascending=False,method='first')
 stats["rpg_rank"]=stats["RPG"].rank(ascending=False)
 stats["apg_rank"]=stats["APG"].rank(ascending=False)
 
@@ -122,7 +141,7 @@ rpg_stats = stats.sort_values(by=['RPG'],ascending=False)
 
 stats = stats.head(30)
 print (stats)
-
+print (headers)
 
 
 # places the DataFrame into a html format without writing it
@@ -152,3 +171,16 @@ with open("apg/index.html", "w", encoding="utf-8") as file:
 
 with open("rpg/index.html", "w", encoding="utf-8") as file:
     file.write(make_html(rpg_html))
+
+
+with open("ppg/style.css", "wt") as file:
+    file.write(make_css(rj_ppg_rank))
+
+with open("blk/style.css", "wt") as file:
+    file.write(make_css(rj_blk_rank))
+
+with open("apg/style.css", "wt") as file:
+    file.write(make_css(rj_apg_rank))
+
+with open("rpg/style.css", "wt") as file:
+    file.write(make_css(rj_rpg_rank))
