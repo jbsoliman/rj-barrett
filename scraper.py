@@ -24,7 +24,7 @@ def isint(x):
 #HTML Skeleton
 def make_html(html):
     html_skeleton = """<!DOCTYPE html>
-    <HTML>
+    <HTML lang="en">
     <head>
     <link rel="stylesheet" type="text/css" href="style.css">
     </head>
@@ -102,10 +102,10 @@ headers[26] = 'APG'
 
 
 stats = pd.DataFrame(player_stats, columns = headers)
-stats["ppg_rank"]=stats["PPG"].rank(ascending=False)
+stats["ppg_rank"]=stats["PPG"].rank(ascending=False,method='first')
 stats["blk_rank"]=stats["BLK"].rank(ascending=False,method='first')
-stats["rpg_rank"]=stats["RPG"].rank(ascending=False)
-stats["apg_rank"]=stats["APG"].rank(ascending=False)
+stats["rpg_rank"]=stats["RPG"].rank(ascending=False,method='first')
+stats["apg_rank"]=stats["APG"].rank(ascending=False,method='first')
 
 #removes the "empty" tables
 stats = stats.dropna(axis=0, how='any', thresh=None, subset=None, inplace=False)
@@ -140,8 +140,7 @@ apg_stats = stats.sort_values(by=['APG'],ascending=False)
 rpg_stats = stats.sort_values(by=['RPG'],ascending=False)
 
 stats = stats.head(30)
-print (stats)
-print (headers)
+
 
 
 # places the DataFrame into a html format without writing it
@@ -172,6 +171,9 @@ with open("apg/index.html", "w", encoding="utf-8") as file:
 with open("rpg/index.html", "w", encoding="utf-8") as file:
     file.write(make_html(rpg_html))
 
+
+with open("ppg/style.css", "wt") as file:
+    file.write(make_css(rj_ppg_rank))
 
 with open("ppg/style.css", "wt") as file:
     file.write(make_css(rj_ppg_rank))
