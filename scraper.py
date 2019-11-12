@@ -20,6 +20,28 @@ def isint(x):
     else:
         return a == b
 
+
+#HTML Skeleton
+def make_html(html):
+    html_skeleton = """<HTML>
+    <body>
+        <h1>RJ Barrett - Rookie of the Year?</h1>
+        <h3>RJ Barrett is:
+        <ul>
+        <li>#{} in Points Per Game</li>
+        <li>#{} in Total Blocks</li>
+        <li>#{} in Rebounds Per Game</li>
+        <li>#{} in Assists Per Game</li>
+        </ul>
+        </h3>
+        {}
+    </body>
+    </HTML>""".format(rj_ppg_rank, rj_blk_rank,rj_rpg_rank,rj_apg_rank,html)
+
+    return html_skeleton
+
+
+
 # NBA season we will be analyzing
 year = 2020
 
@@ -91,33 +113,42 @@ stats = stats.drop('apg_rank', axis=1)
 
 
 
-#Sorts table values by PPG Descending
+#Sorts table values by MP Descending
 stats = stats.sort_values(by=['MP'],ascending=False)
+ppg_stats = stats.sort_values(by=['PPG'],ascending=False)
+blk_stats = stats.sort_values(by=['BLK'],ascending=False)
+apg_stats = stats.sort_values(by=['APG'],ascending=False)
+rpg_stats = stats.sort_values(by=['RPG'],ascending=False)
+
 stats = stats.head(30)
 print (stats)
 
 
 
 # places the DataFrame into a html format without writing it
-html = stats.to_html(index=False)
+home_html = stats.to_html(index=False)
+ppg_html = ppg_stats.to_html(index=False)
+blk_html = blk_stats.to_html(index=False)
+apg_html = apg_stats.to_html(index=False)
+rpg_html = rpg_stats.to_html(index=False)
 
 
-#HTML Skeleton
-rj_html_skeleton = """<HTML>
-<body>
-    <h1>RJ Barrett - Rookie of the Year?</h1>
-    <h3>RJ Barrett is:
-    <ul>
-    <li>#{} in Points Per Game</li>
-    <li>#{} in Total Blocks</li>
-    <li>#{} in Rebounds Per Game</li>
-    <li>#{} in Assists Per Game</li>
-    </ul>
-    </h3>
-    {}
-</body>
-</HTML>""".format(rj_ppg_rank, rj_blk_rank,rj_rpg_rank,rj_apg_rank,html)
+
+
+
 
 # writes the html format to index.html with proper encoding
 with open("index.html", "w", encoding="utf-8") as file:
-    file.write(rj_html_skeleton)
+    file.write(make_html(home_html))
+
+with open("ppg/index.html", "w", encoding="utf-8") as file:
+    file.write(make_html(ppg_html))
+
+with open("blk/index.html", "w", encoding="utf-8") as file:
+    file.write(make_html(blk_html))
+
+with open("apg/index.html", "w", encoding="utf-8") as file:
+    file.write(make_html(apg_html))
+
+with open("rpg/index.html", "w", encoding="utf-8") as file:
+    file.write(make_html(rpg_html))

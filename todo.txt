@@ -29,3 +29,9 @@ NEWER TODO:
   - find 'RJ Barrett' row then assign rankings to provided variables
 - Keep them in a variable
 - Output them in HTML list in skeleton
+
+NEWEST TODO:
+
+- Make a page for ALL Rookies
+  - Hardcoded
+  - Or make a function that outputs into the specific player's folder's index.html
