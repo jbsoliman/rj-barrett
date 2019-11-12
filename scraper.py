@@ -92,7 +92,7 @@ stats = stats.drop('apg_rank', axis=1)
 
 
 #Sorts table values by PPG Descending
-#stats = stats.sort_values(by=['BLK'],ascending=False)
+stats = stats.sort_values(by=['MP'],ascending=False)
 stats = stats.head(30)
 print (stats)
 
