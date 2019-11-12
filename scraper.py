@@ -76,11 +76,18 @@ rj_blk_rank = stats.at[1,'blk_rank']
 rj_rpg_rank = stats.at[1,'rpg_rank']
 rj_apg_rank = stats.at[1,'apg_rank']
 
-
+#Converting ranks to INTS for HTML
 rj_ppg_rank = int(rj_ppg_rank)
 rj_blk_rank = int(rj_blk_rank)
 rj_rpg_rank = int(rj_rpg_rank)
 rj_apg_rank = int(rj_apg_rank)
+
+
+#Dropping ranking columns from table
+stats = stats.drop('ppg_rank', axis=1)
+stats = stats.drop('blk_rank', axis=1)
+stats = stats.drop('rpg_rank', axis=1)
+stats = stats.drop('apg_rank', axis=1)
 
 
 
