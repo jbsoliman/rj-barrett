@@ -45,7 +45,7 @@ rows = soup.find_all('tr')[2:]
 player_stats = [[td.get_text() for td in rows[i].find_all('td')]
             for i in range(len(rows))]
 
-ppg = 0;
+
 
 # converting table to floats for sorting // setting rank for ppg
 for i in range(len(player_stats)):
@@ -53,16 +53,39 @@ for i in range(len(player_stats)):
         if isfloat(player_stats[i][j]):
             player_stats[i][j] = float(player_stats[i][j])
 
+# Renaming the per game columns for later ranking
+headers[23] = 'MPG'
+headers[24] = 'PPG'
+headers[25] = 'RPG'
+headers[26] = 'APG'
 
 
 stats = pd.DataFrame(player_stats, columns = headers)
+stats["ppg_rank"]=stats["PPG"].rank(ascending=False)
+stats["blk_rank"]=stats["BLK"].rank(ascending=False)
+stats["rpg_rank"]=stats["RPG"].rank(ascending=False)
+stats["apg_rank"]=stats["APG"].rank(ascending=False)
+
+#removes the "empty" tables
+stats = stats.dropna(axis=0, how='any', thresh=None, subset=None, inplace=False)
+
+#retreive values for RJ Barrett
+
+rj_ppg_rank = stats.at[1,'ppg_rank']
+rj_blk_rank = stats.at[1,'blk_rank']
+rj_rpg_rank = stats.at[1,'rpg_rank']
+rj_apg_rank = stats.at[1,'apg_rank']
 
 
+rj_ppg_rank = int(rj_ppg_rank)
+rj_blk_rank = int(rj_blk_rank)
+rj_rpg_rank = int(rj_rpg_rank)
+rj_apg_rank = int(rj_apg_rank)
 
 
 
 #Sorts table values by PPG Descending
-stats = stats.sort_values(by=['PTS'],ascending=False)
+#stats = stats.sort_values(by=['BLK'],ascending=False)
 stats = stats.head(30)
 print (stats)
 
@@ -73,18 +96,21 @@ html = stats.to_html(index=False)
 
 
 #HTML Skeleton
-html_skeleton = """<HTML>
+rj_html_skeleton = """<HTML>
 <body>
     <h1>RJ Barrett - Rookie of the Year?</h1>
     <h3>RJ Barrett is:
     <ul>
-    <li>#{} in PPG</li>
+    <li>#{} in Points Per Game</li>
+    <li>#{} in Total Blocks</li>
+    <li>#{} in Rebounds Per Game</li>
+    <li>#{} in Assists Per Game</li>
     </ul>
     </h3>
     {}
 </body>
-</HTML>""".format('2',html)
+</HTML>""".format(rj_ppg_rank, rj_blk_rank,rj_rpg_rank,rj_apg_rank,html)
 
 # writes the html format to index.html with proper encoding
 with open("index.html", "w", encoding="utf-8") as file:
-    file.write(html_skeleton)
+    file.write(rj_html_skeleton)

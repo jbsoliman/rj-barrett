@@ -21,3 +21,11 @@ NEW TODO:
         - Or maybe one BIG page? hmmm
 - Figure out if extra pages are needed
 - Eventual CSS styling for all pages
+
+
+NEWER TODO:
+
+- Grab rankings of all stats needed
+  - find 'RJ Barrett' row then assign rankings to provided variables
+- Keep them in a variable
+- Output them in HTML list in skeleton
