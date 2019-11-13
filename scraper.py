@@ -47,7 +47,10 @@ def make_html(html):
 
 
 def make_css(row):
-    css_skeleton = """table tr:nth-of-type({}){{background-color: coral;}}
+    css_skeleton = """html, body, h1, h2, h3, h4, h5, h6 {{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    }}
+    table tr:nth-of-type({}){{background-color: coral;}}
 
     """.format(str(row))
 
