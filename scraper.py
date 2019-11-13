@@ -124,12 +124,13 @@ rj_rpg_rank = int(rj_rpg_rank)
 rj_apg_rank = int(rj_apg_rank)
 
 
-#Dropping ranking columns from table
+#Dropping unneeeded columns from table
 stats = stats.drop('ppg_rank', axis=1)
 stats = stats.drop('blk_rank', axis=1)
 stats = stats.drop('rpg_rank', axis=1)
 stats = stats.drop('apg_rank', axis=1)
-
+stats = stats.drop('Debut', axis=1)
+stats = stats.drop('Yrs', axis=1)
 
 
 #Sorts table values by MP Descending
