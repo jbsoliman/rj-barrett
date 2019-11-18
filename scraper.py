@@ -22,7 +22,7 @@ def isint(x):
 
 
 #HTML Skeleton
-def make_html(html):
+def make_html(html,table_title):
     html_skeleton = """<!DOCTYPE html>
     <HTML lang="en">
     <head>
@@ -39,9 +39,11 @@ def make_html(html):
         <li><a href="https://jbsoliman.github.io/rj-barrett/apg">#{} in Assists Per Game</a></li>
         </ul>
         </h3>
+
+        <h3>Here are the leaders in {}:</h3>
         {}
     </body>
-    </HTML>""".format(rj_ppg_rank,rj_rpg_rank,rj_apg_rank,html)
+    </HTML>""".format(rj_ppg_rank,rj_rpg_rank,rj_apg_rank,table_title,html)
 
     return html_skeleton
 
@@ -180,19 +182,19 @@ rpg_html = rpg_stats.to_html(index=False)
 
 # writes the html format to index.html with proper encoding
 with open("index.html", "w", encoding="utf-8") as file:
-    file.write(make_html(home_html))
+    file.write(make_html(home_html,'total minutes'))
 
 with open("ppg/index.html", "w", encoding="utf-8") as file:
-    file.write(make_html(ppg_html))
+    file.write(make_html(ppg_html,'Points Per Game'))
 
 #with open("blk/index.html", "w", encoding="utf-8") as file:
 #    file.write(make_html(blk_html))
 
 with open("apg/index.html", "w", encoding="utf-8") as file:
-    file.write(make_html(apg_html))
+    file.write(make_html(apg_html,'Assists Per Game'))
 
 with open("rpg/index.html", "w", encoding="utf-8") as file:
-    file.write(make_html(rpg_html))
+    file.write(make_html(rpg_html,'Rebounds Per Game'))
 
 
 with open("style.css", "wt") as file:
