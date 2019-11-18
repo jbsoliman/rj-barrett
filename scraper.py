@@ -28,6 +28,7 @@ def make_html(html,table_title):
     <head>
     <link rel="icon" href="https://user-images.githubusercontent.com/16616543/38898937-6a56f3b0-4264-11e8-997d-139dccf4314d.png">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <title>RJ Barrett Rookie Stat Tracker</title>
     </head>
     <body>
 
@@ -52,11 +53,20 @@ def make_css(row):
     css_skeleton = """html, body, h1, h2, h3, h4, h5, h6 {{
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     }}
-    table tbody tr:nth-of-type({}){{background-color: coral;}}
-    tr:hover {{ background-color: #ffa;}}
+    body {{
+        background-color: #BEC0C2;
+    }}
     table {{
         overflow: hidden;
+
+
     }}
+    table tbody tr:nth-of-type({}){{background-color: #F58426;}}
+    tr:hover {{ background-color: #ffa;}}
+    th {{
+        background-color: #006BB6;
+        text-align: left;
+        }}
     td, th {{
         position: relative;
     }}
@@ -64,7 +74,7 @@ def make_css(row):
     th:hover::after {{
         content: "";
         position: absolute;
-        background-color: #ffa;
+        background-color: #ffa !important;
         left: 0;
         top: -5000px;
         height: 10000px;
