@@ -164,7 +164,10 @@ ppg_stats = stats.sort_values(by=['PPG'],ascending=False)
 apg_stats = stats.sort_values(by=['APG'],ascending=False)
 rpg_stats = stats.sort_values(by=['RPG'],ascending=False)
 
-stats = stats.head(30)
+stats = stats.head(20)
+ppg_stats = ppg_stats.head(20)
+apg_stats = apg_stats.head(20)
+rpg_stats = rpg_stats.head(20)
 
 
 
