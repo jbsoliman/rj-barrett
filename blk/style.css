@@ -2,5 +2,23 @@ html, body, h1, h2, h3, h4, h5, h6 {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     }
     table tr:nth-of-type(13){background-color: coral;}
+    tr:hover { background-color: #ffa;}
+    table {
+        overflow: hidden;
+    }
+    td, th {
+        position: relative;
+    }
+    td:hover::after,
+    th:hover::after {
+        content: "";
+        position: absolute;
+        background-color: #ffa;
+        left: 0;
+        top: -5000px;
+        height: 10000px;
+        width: 100%;
+        z-index: -1;
+    }
 
     

@@ -45,12 +45,30 @@ def make_html(html):
 
     return html_skeleton
 
-
+#Row/Column Highlighting from https://css-tricks.com/simple-css-row-column-highlighting/
 def make_css(row):
     css_skeleton = """html, body, h1, h2, h3, h4, h5, h6 {{
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     }}
     table tr:nth-of-type({}){{background-color: coral;}}
+    tr:hover {{ background-color: #ffa;}}
+    table {{
+        overflow: hidden;
+    }}
+    td, th {{
+        position: relative;
+    }}
+    td:hover::after,
+    th:hover::after {{
+        content: "";
+        position: absolute;
+        background-color: #ffa;
+        left: 0;
+        top: -5000px;
+        height: 10000px;
+        width: 100%;
+        z-index: -1;
+    }}
 
     """.format(str(row))
 
