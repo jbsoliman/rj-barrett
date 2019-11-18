@@ -26,22 +26,22 @@ def make_html(html):
     html_skeleton = """<!DOCTYPE html>
     <HTML lang="en">
     <head>
+    <link rel="icon" href="https://user-images.githubusercontent.com/16616543/38898937-6a56f3b0-4264-11e8-997d-139dccf4314d.png">
     <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
 
         <h1><a href="https://jbsoliman.github.io/rj-barrett">RJ Barrett - Rookie of the Year?</a></h1>
-        <h3>RJ Barrett is:
+        <h3>Among all Rookies, RJ Barrett is:
         <ul>
         <li><a href="https://jbsoliman.github.io/rj-barrett/ppg">#{} in Points Per Game</a></li>
-        <li><a href="https://jbsoliman.github.io/rj-barrett/blk">#{} in Total Blocks</a></li>
         <li><a href="https://jbsoliman.github.io/rj-barrett/rpg">#{} in Rebounds Per Game</a></li>
         <li><a href="https://jbsoliman.github.io/rj-barrett/apg">#{} in Assists Per Game</a></li>
         </ul>
         </h3>
         {}
     </body>
-    </HTML>""".format(rj_ppg_rank, rj_blk_rank,rj_rpg_rank,rj_apg_rank,html)
+    </HTML>""".format(rj_ppg_rank,rj_rpg_rank,rj_apg_rank,html)
 
     return html_skeleton
 
@@ -50,7 +50,7 @@ def make_css(row):
     css_skeleton = """html, body, h1, h2, h3, h4, h5, h6 {{
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     }}
-    table tr:nth-of-type({}){{background-color: coral;}}
+    table tbody tr:nth-of-type({}){{background-color: coral;}}
     tr:hover {{ background-color: #ffa;}}
     table {{
         overflow: hidden;
@@ -121,8 +121,9 @@ headers[26] = 'APG'
 
 
 stats = pd.DataFrame(player_stats, columns = headers)
+stats["mp_rank"]=stats["MP"].rank(ascending=False,method='first')
 stats["ppg_rank"]=stats["PPG"].rank(ascending=False,method='first')
-stats["blk_rank"]=stats["BLK"].rank(ascending=False,method='first')
+#stats["blk_rank"]=stats["BLK"].rank(ascending=False,method='first')
 stats["rpg_rank"]=stats["RPG"].rank(ascending=False,method='first')
 stats["apg_rank"]=stats["APG"].rank(ascending=False,method='first')
 
@@ -130,22 +131,24 @@ stats["apg_rank"]=stats["APG"].rank(ascending=False,method='first')
 stats = stats.dropna(axis=0, how='any', thresh=None, subset=None, inplace=False)
 
 #retreive values for RJ Barrett
-
+rj_mp_rank = stats.at[1,'mp_rank']
 rj_ppg_rank = stats.at[1,'ppg_rank']
-rj_blk_rank = stats.at[1,'blk_rank']
+#rj_blk_rank = stats.at[1,'blk_rank']
 rj_rpg_rank = stats.at[1,'rpg_rank']
 rj_apg_rank = stats.at[1,'apg_rank']
 
 #Converting ranks to INTS for HTML
+rj_mp_rank = int(rj_mp_rank)
 rj_ppg_rank = int(rj_ppg_rank)
-rj_blk_rank = int(rj_blk_rank)
+#rj_blk_rank = int(rj_blk_rank)
 rj_rpg_rank = int(rj_rpg_rank)
 rj_apg_rank = int(rj_apg_rank)
 
 
 #Dropping unneeeded columns from table
+stats = stats.drop('mp_rank', axis=1)
 stats = stats.drop('ppg_rank', axis=1)
-stats = stats.drop('blk_rank', axis=1)
+#stats = stats.drop('blk_rank', axis=1)
 stats = stats.drop('rpg_rank', axis=1)
 stats = stats.drop('apg_rank', axis=1)
 stats = stats.drop('Debut', axis=1)
@@ -155,7 +158,7 @@ stats = stats.drop('Yrs', axis=1)
 #Sorts table values by MP Descending
 stats = stats.sort_values(by=['MP'],ascending=False)
 ppg_stats = stats.sort_values(by=['PPG'],ascending=False)
-blk_stats = stats.sort_values(by=['BLK'],ascending=False)
+#blk_stats = stats.sort_values(by=['BLK'],ascending=False)
 apg_stats = stats.sort_values(by=['APG'],ascending=False)
 rpg_stats = stats.sort_values(by=['RPG'],ascending=False)
 
@@ -166,7 +169,7 @@ stats = stats.head(30)
 # places the DataFrame into a html format without writing it
 home_html = stats.to_html(index=False)
 ppg_html = ppg_stats.to_html(index=False)
-blk_html = blk_stats.to_html(index=False)
+#blk_html = blk_stats.to_html(index=False)
 apg_html = apg_stats.to_html(index=False)
 rpg_html = rpg_stats.to_html(index=False)
 
@@ -182,8 +185,8 @@ with open("index.html", "w", encoding="utf-8") as file:
 with open("ppg/index.html", "w", encoding="utf-8") as file:
     file.write(make_html(ppg_html))
 
-with open("blk/index.html", "w", encoding="utf-8") as file:
-    file.write(make_html(blk_html))
+#with open("blk/index.html", "w", encoding="utf-8") as file:
+#    file.write(make_html(blk_html))
 
 with open("apg/index.html", "w", encoding="utf-8") as file:
     file.write(make_html(apg_html))
@@ -192,14 +195,14 @@ with open("rpg/index.html", "w", encoding="utf-8") as file:
     file.write(make_html(rpg_html))
 
 
-with open("ppg/style.css", "wt") as file:
-    file.write(make_css(rj_ppg_rank))
+with open("style.css", "wt") as file:
+    file.write(make_css(rj_mp_rank))
 
 with open("ppg/style.css", "wt") as file:
     file.write(make_css(rj_ppg_rank))
 
-with open("blk/style.css", "wt") as file:
-    file.write(make_css(rj_blk_rank))
+#with open("blk/style.css", "wt") as file:
+#    file.write(make_css(rj_blk_rank))
 
 with open("apg/style.css", "wt") as file:
     file.write(make_css(rj_apg_rank))

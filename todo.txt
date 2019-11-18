@@ -32,6 +32,4 @@ NEWER TODO:
 
 NEWEST TODO:
 
-- Make a page for ALL Rookies
-  - Hardcoded
-  - Or make a function that outputs into the specific player's folder's index.html
+- Color RJ's Original row 
