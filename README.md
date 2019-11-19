@@ -2,9 +2,10 @@
 
 This project parses through the 2019-2020 NBA Rookie Statistics from Basketball-Reference.com and ranks RJ Barrett among league leaders in the following stats:
 * Points Per Game
-* Total Blocks
 * Rebounds Per Game
 * Assists Per Game
+
+Created for educational purposes only.
 
 ### Technologies used:
 * Python

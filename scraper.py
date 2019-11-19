@@ -32,7 +32,7 @@ def make_html(html,table_title):
     </head>
     <body>
 
-        <h1><a href="https://jbsoliman.github.io/rj-barrett">RJ Barrett - Rookie of the Year?</a></h1>
+        <h1><a href="https://jbsoliman.github.io/rj-barrett">RJ Barrett - Rookie of the Year? Here are the facts.</a></h1>
         <h3>Among all Rookies, RJ Barrett is:
         <ul>
         <li><a href="https://jbsoliman.github.io/rj-barrett/ppg">#{} in Points Per Game</a></li>
