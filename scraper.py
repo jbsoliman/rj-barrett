@@ -46,7 +46,7 @@ def make_html(html,table_title):
 
         <h3>Here are the leaders in {}:</h3>
         {}
-        <h2>Updated on <time datetime={}>.</h2>
+        <h2>Updated on <time datetime="{}">.</h2>
     </body>
     </HTML>""".format(rj_ppg_rank,rj_rpg_rank,rj_apg_rank,table_title,html,date_now)
 
