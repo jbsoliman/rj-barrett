@@ -18,3 +18,7 @@ Created for educational purposes only.
     * Displays ranked stats as well as a table sorted by current stat based on page
 * CSS
     * Highlights RJ Barrett's row as well as highlights specific row/column on mouse hover
+
+
+#### Update 0.01:
+* Added daily updating of pages through Windows Task Scheduler
