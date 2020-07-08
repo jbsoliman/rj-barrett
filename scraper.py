@@ -23,7 +23,7 @@ def isint(x):
 
 
 date_now = datetime.now()
-print(date_now)
+
 
 #HTML Skeleton
 def make_html(html,table_title):
@@ -48,7 +48,7 @@ def make_html(html,table_title):
 
         <h3>Here are the leaders in {}:</h3>
         {}
-        <h2>Updated on {} .</h2>
+        <h2>Updated on {}.</h2>
     </body>
     </HTML>""".format(rj_ppg_rank,rj_rpg_rank,rj_apg_rank,table_title,html,date_now)
 
