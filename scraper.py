@@ -36,9 +36,9 @@ def make_html(html,table_title):
     </head>
     <body>
 
-        <h1><a href="https://jbsoliman.github.io/rj-barrett">RJ Barrett - Rookie of the Year?</a></h1>
+        <h1><a href="https://jbsoliman.github.io/rj-barrett">Tyrese Haliburton - Rookie of the Year?</a></h1>
         <h2>Here are the facts. </h2>
-        <h3>Among all Rookies, RJ Barrett is:
+        <h3>Among all Rookies, Tyrese Haliburton is:
         <ul>
         <li><a href="https://jbsoliman.github.io/rj-barrett/ppg">#{} in Points Per Game</a></li>
         <li><a href="https://jbsoliman.github.io/rj-barrett/rpg">#{} in Rebounds Per Game</a></li>
@@ -101,7 +101,7 @@ def make_css(row):
 
 
 # NBA season we will be analyzing
-year = 2020
+year = 2021
 
 ##Default Rookie URL
 url = "https://www.basketball-reference.com/leagues/NBA_{}_rookies.html".format(year)
@@ -148,12 +148,20 @@ stats["apg_rank"]=stats["APG"].rank(ascending=False,method='first')
 #removes the "empty" tables
 stats = stats.dropna(axis=0, how='any', thresh=None, subset=None, inplace=False)
 
-#retreive values for RJ Barrett
-rj_mp_rank = stats.at[1,'mp_rank']
-rj_ppg_rank = stats.at[1,'ppg_rank']
-#rj_blk_rank = stats.at[1,'blk_rank']
-rj_rpg_rank = stats.at[1,'rpg_rank']
-rj_apg_rank = stats.at[1,'apg_rank']
+#sets the ability to print entire pandas DataFrame
+#pd.set_option("display.max_rows", None, "display.max_columns", None)
+#print(stats)
+
+#found from printing stats table
+#selecting Hali
+rookie_number = 24
+
+#retreive values for target player
+rj_mp_rank = stats.at[rookie_number,'mp_rank']
+rj_ppg_rank = stats.at[rookie_number,'ppg_rank']
+#rj_blk_rank = stats.at[rookie_number,'blk_rank']
+rj_rpg_rank = stats.at[rookie_number,'rpg_rank']
+rj_apg_rank = stats.at[rookie_number,'apg_rank']
 
 #Converting ranks to INTS for HTML
 rj_mp_rank = int(rj_mp_rank)
