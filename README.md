@@ -1,6 +1,6 @@
-## RJ Barrett Rookie Stat Tracker
+## NBA Rookie Stat Tracker
 
-This project parses through the 2019-2020 NBA Rookie Statistics from Basketball-Reference.com and ranks RJ Barrett among league leaders in the following stats:
+This project parses through the 2020-2021 NBA Rookie Statistics from Basketball-Reference.com and ranks a targeted player among league leaders in the following stats:
 * Points Per Game
 * Rebounds Per Game
 * Assists Per Game
