@@ -48,7 +48,7 @@ def make_html(html,table_title):
 
         <h3>Here are the leaders in {}:</h3>
         {}
-        <h3>100&percnt; inspired by the GOAT: https://www.basketball-reference.com/.</h3>
+        <h3>100&percnt; inspired by the GOAT: https://www.basketball-reference.com/</h3>
         <h2>Updated on {}.</h2>
     </body>
     </HTML>""".format(rj_ppg_rank,rj_rpg_rank,rj_apg_rank,table_title,html,date_now)
